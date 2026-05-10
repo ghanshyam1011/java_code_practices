@@ -1,4 +1,4 @@
-package HashMaps;
+package HashMaps.Sets;
 import java.util.HashSet;
 public class sets_stl {
     public static void main(String[] args){

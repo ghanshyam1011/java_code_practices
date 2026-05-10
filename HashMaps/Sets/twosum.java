@@ -1,4 +1,4 @@
-package HashMaps;
+package HashMaps.Sets;
 import java.util.HashSet;
 public class twosum {
     boolean twosum(int arr[],int target) {
