@@ -34,9 +34,9 @@ public class macoccurringchar {
             maxFreq = freq;
            }
         }
-        char ans = s.charAt(0);
+        char ans = 'z';
         for(char ch : map.keySet()){
-            if(map.get(ch) == maxFreq){
+            if(map.get(ch) == maxFreq && ch < ans){
                 ans = ch;
                 break;
             }

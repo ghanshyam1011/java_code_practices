@@ -1,4 +1,4 @@
-package HashMaps.Sets;
+package HashMaps.Maps;
 import java.util.HashMap;   
   
 public class countPairs{
