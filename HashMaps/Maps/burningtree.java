@@ -24,7 +24,7 @@ public class burningtree {
          q.add(new pair(start,0));
          HashSet<Node> burned = new HashSet<>();
          burned.add(start);
-         int time = Math.max(time,dist);
+         int time = 0               ;
          while(q.size()>0){
             pair front = q.remove();
             int dist = front.dist;
