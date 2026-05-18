@@ -10,12 +10,12 @@ public class btstl {
         }
     }
     public static void main(String[] args) {
-        // Constructing the binary tree
-        //   a
-        //  / \
-        //  b  c
-        //    / \     
-        //    d   e 
+            // Constructing the binary tree
+            //   a
+            //  / \
+            //  b  c
+            //    / \     
+            //    d   e 
           Node a = new Node(1);
           Node b = new Node(2); 
           Node c = new Node(3);
@@ -27,12 +27,41 @@ public class btstl {
             b.right = e;
             display(a); 
             System.out.println(size(a));
+            System.out.println(sum(a));
+            System.out.println(Product(a));
+            System.out.println(max(a)); 
     }
     public static int size(Node root){
         // if(root == null) return 0;
         // int leftSize = size(root.left);
         // int rightSize = size(root.right);
         return (root == null) ? 0 : size(root.left) + size(root.right) + 1;
+    }
+
+    public static int sum(Node root){
+        return (root == null) ? 0 : sum(root.left) + sum(root.right) + root.val;
+    }
+    public static int Product(Node root){
+        return (root == null) ? 1 : Product(root.left) * Product(root.right) * root.val;
+    }
+    public static int max(Node root){
+        if(root == null) return Integer.MIN_VALUE;
+        int leftMax = max(root.left);
+        int rightMax = max(root.right);
+        return Math.max(root.val, Math.max(leftMax, rightMax));
+    }
+
+    public static int min(Node root){
+        if(root == null) return Integer.MAX_VALUE;
+        int leftMin = min(root.left);
+        int rightMin = min(root.right);
+        return Math.min(root.val, Math.min(leftMin, rightMin));
+    }
+    public static int maxlevel(Node root){
+        if(root == null) return 0;
+        int leftLevel = maxlevel(root.left);
+        int rightLevel = maxlevel(root.right);
+        return Math.max(leftLevel, rightLevel) + 1;
     }
 
     public static void display(Node root){
