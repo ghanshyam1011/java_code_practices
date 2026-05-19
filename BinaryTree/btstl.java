@@ -30,6 +30,14 @@ public class btstl {
             System.out.println(sum(a));
             System.out.println(Product(a));
             System.out.println(max(a)); 
+            System.out.println(min(a));
+            System.out.println(maxlevel(a));
+                System.out.println("Inorder Traversal:");
+                inorder(a);
+                System.out.println("\nPreorder Traversal:");
+                preOrder(a);
+                System.out.println("\nPostorder Traversal:");
+                postOrder(a);                 
     }
     public static int size(Node root){
         // if(root == null) return 0;
@@ -70,4 +78,23 @@ public class btstl {
         display(root.left);
         display(root.right);
     }
+    public static void inorder(Node root){
+        if(root == null) return;
+        inorder(root.left);
+        System.out.print(root.val + " ");
+        inorder(root.right);
+    }
+    public static void preOrder(Node root){
+            if(root == null) return;
+            System.out.print(root.val + " ");
+            preOrder(root.left);
+            preOrder(root.right);
+        }
+        public static void postOrder(Node root){
+            if(root == null) return;
+            postOrder(root.left);
+            postOrder(root.right);
+            System.out.print(root.val + " ");
+        }
 }
+
