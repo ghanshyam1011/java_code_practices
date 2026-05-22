@@ -1,5 +1,5 @@
 package BinaryTree;
-
+import java.util.*;
 public class btstl {
     static class Node{
         int val;
@@ -7,6 +7,14 @@ public class btstl {
         Node right;
         Node(int val){
             this.val = val;
+        }
+    }
+    static class pair{
+        Node node;
+        int level;
+        pair(Node node,int level){
+            this.node = node;
+            this.level = level;
         }
     }
     public static void main(String[] args) {
@@ -37,7 +45,17 @@ public class btstl {
                 System.out.println("\nPreorder Traversal:");
                 preOrder(a);
                 System.out.println("\nPostorder Traversal:");
-                postOrder(a);                 
+                postOrder(a);  
+                System.out.println("\nLevel Order Traversal:");
+                levelOrder(a);
+                System.out.println("\nLevel Order Traversal with Levels:");
+                levelOrderWithlevel(a);
+                System.out.println("\nReverse Level Order Traversal:");
+                reverseLevelOrder(a);
+                System.out.println("\nNodes at Kth Level:");
+                int k = 2; // Change this value to get nodes at different levels
+                Kthlevel(a, 0, k);
+                              
     }
     public static int size(Node root){
         // if(root == null) return 0;
@@ -96,5 +114,56 @@ public class btstl {
             postOrder(root.right);
             System.out.print(root.val + " ");
         }
-}
+        public static void levelOrder(Node root){
+            if(root == null) return;
+            Queue<Node> queue = new LinkedList<>();
+            queue.add(root);
+            while(!queue.isEmpty()){
+                Node current = queue.poll();
+                System.out.print(current.val + " ");
+                if(current.left != null) queue.add(current.left);
+                if(current.right != null) queue.add(current.right);
+            }
+        }
+        private static void levelOrderWithlevel(Node root) {
+            if (root == null) return;
+            Queue<pair> queue = new LinkedList<>();
+            queue.add(new pair(root, 0));
+            int currentLevel = 0;
+            while (!queue.isEmpty()) {
+                pair currentPair = queue.poll();
+                Node currentNode = currentPair.node;
+                int nodeLevel = currentPair.level;
+                if (nodeLevel > currentLevel) {
+                    System.out.println(); // Move to the next line for a new level
+                    currentLevel = nodeLevel;
+                }
+                System.out.print(currentNode.val + " ");
+                if (currentNode.left != null) queue.add(new pair(currentNode.left, nodeLevel + 1));
+                if (currentNode.right != null) queue.add(new pair(currentNode.right, nodeLevel + 1));
+            }
+        } 
+        public static void reverseLevelOrder(Node root){
+            if(root == null) return;
+            Queue<Node> queue = new LinkedList<>();
+            Stack<Node> stack = new Stack<>();
+            queue.add(root);
+            while(!queue.isEmpty()){
+                Node current = queue.poll();
+                stack.push(current);
+                if(current.right != null) queue.add(current.right);
+                if(current.left != null) queue.add(current.left);
+            }
+            while(!stack.isEmpty()){
+                System.out.print(stack.pop().val + " ");
+            }
+        }
+        public static void Kthlevel(Node root,int level,int k)
+        {
+            if(root ==  null) return ;
+            if(level == k) System.out.print(root.val + " ");
+            Kthlevel(root.left, level + 1, k);
+            Kthlevel(root.right, level + 1, k);
+        }      
+}       
 
