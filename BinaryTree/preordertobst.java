@@ -3,21 +3,20 @@ package BinaryTree;
 import java.util.Arrays;
 
 public class preordertobst {
-    /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
+  
+  public class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode() {}
+      TreeNode(int val) { this.val = val; }
+      TreeNode(int val, TreeNode left, TreeNode right) {
+          this.val = val;
+          this.left = left;
+          this.right = right;
+     }
+ }
+ 
 
 class Solution {
 
@@ -34,9 +33,9 @@ class Solution {
                      inorder, preorder);
     }
 
-    public static TreeNode build(int preLo, int preHi,
-                                 int inLo, int inHi,
-                                 int[] inorder, int[] preorder) {
+    public TreeNode build(int preLo, int preHi,
+                          int inLo, int inHi,
+                          int[] inorder, int[] preorder) {
 
         if (preLo > preHi || inLo > inHi)
             return null;

@@ -1,7 +1,7 @@
 package BinaryTree;
 import java.util.ArrayList;
 public class paths {
-    class Node{
+    static class Node{
         int val;
         Node left,right;
         Node(int val){
