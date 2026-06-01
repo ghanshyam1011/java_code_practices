@@ -1,6 +1,13 @@
 package HashMaps.Maps;
 import java.util.*;
 public class copylistwithrp {
+    // Simple Node definition for linked list with random pointer
+    static class Node {
+        int data;
+        Node next;
+        Node random;
+        Node(int data){ this.data = data; }
+    }
     public Node deepcopy(Node head1){
         Node temp1 = head1;
         Node head2 = new Node(-1);
