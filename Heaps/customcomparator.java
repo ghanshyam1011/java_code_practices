@@ -1,4 +1,5 @@
 package Heaps;
+import java.util.Arrays;
 class Student{
     String name;
     int rno;
@@ -8,6 +9,9 @@ class Student{
         this.rno = rno;
         this.cgpa = cgpa;
     }
+    public int comparaTo(Student s){
+        return Double.compare(this.cgpa, s.cgpa);
+    }
 }
 public class customcomparator {
     public static void main(String[] args) {
@@ -15,10 +19,15 @@ public class customcomparator {
         Student s2 = new Student("Bob", 102, 3.6);
         Student s3 = new Student("Charlie", 103, 3.9);
         // Custom comparator to sort students by CGPA in descending order
-        java.util.Comparator<Student> cgpaComparator = (a, b) -> Double.compare(b.cgpa, a.cgpa);
-        java.util.List<Student> students = java.util.Arrays.asList(s1, s2, s3);
-        students.sort(cgpaComparator);
-        for (Student s : students) {
+        // java.util.Comparator<Student> cgpaComparator = (a, b) -> Double.compare(b.cgpa, a.cgpa);
+        // java.util.List<Student> students = java.util.Arrays.asList(s1, s2, s3);
+        // students.sort(cgpaComparator);
+        // for (Student s : students) {
+        //     System.out.println(s.name + " - " + s.cgpa);
+        // }
+        Student[] arr = {s1, s2, s3};
+        Arrays.sort(arr, (a, b) -> Double.compare(b.cgpa, a.cgpa));
+        for(Student s : arr) {
             System.out.println(s.name + " - " + s.cgpa);
         }
     }
